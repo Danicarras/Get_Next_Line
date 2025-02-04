@@ -1,0 +1,58 @@
+char *get_next_line(int fd)
+{
+	char *line;
+	char *tmp;
+	static char *storage;
+
+	tmp = funcion que lee; TIENE QUE LEER HASTA TENER UNA 
+	LINEA ENTERA -> tiene que encontrar \n, hace falta join y strchr
+	storage = join storage & tmp
+
+	funcion que guarde en line hasta el salto de linea
+	funcion que guearde en storage el resto
+
+	return line;
+}
+
+
+read_lime
+{
+	determino buff y dim como ssize_t (ssize_t es un size t con simbolo)
+	igualamos buff a malloc del tamaño de char por el tamaño del buffer + 1 (por el \n)
+	comprobanos que no falle el malloc 
+	hacemos bucle con ft_strchr para que encentre \n y que este en una posicion diferente a 0 en el texto (dim)
+	{
+		igualamos dim a read del fichero, el buff asignado por nosotros y el BUFFER_SIZE
+		si dim es <0 liberamos el buff y retornamos nulo
+
+		igualamos buff en dim a \0 para añadir el nulo
+		al string lo igualamos a strjoin del string y el buff
+	}
+	por si no entra al bucle liberamos buff y retornamos el string
+}
+
+Consideraciones:
+1. Tener en cuenta que el fd y el BUFFER_SIZE sean validos
+2. En caso de de que no te definan BUFFER_SIZE definirlo desde la libreria(ifndef, define, endif)
+3. En caso de error liberar toda la memoria y devolver NULL
+4. En caso de que el read lea un numero negativo de caracteres llorar(es un error, vaya al punto 3)
+
+malloc o calloc buffer size +1 * sizeof char 
+int read ( int fd , void* buffer , unsigned bytes4); 
+
+save_extra
+{
+cuando leemos con el buffer podrian haber caracteres restantes que se hayan leido junto al \n entonces debereremos guardarlos para leerlo en la siguiente linea
+codigo:
+calculamos la cantidad de caracteres que tiene la linea hasta el \n y con el buffer podemos calcular los caracteres que seran restantes
+guardamos los caracteres restantes y juntamos con la linea siguiente (preguntar como hacer algo de esto)
+}
+
+save_line
+{
+guardamosla linea y retornamos su valor para continuar leyendo
+buscar 1er salto de linea y guardar lo restante (calloc) hasta el \0
+}
+
+calloc con espacio de i + 1 (por null) 
+copiar la linea con un bucle iterando en storage con "i", 
