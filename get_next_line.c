@@ -6,18 +6,17 @@
 /*   By: dacarras <dacarras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:53:52 by dacarras          #+#    #+#             */
-/*   Updated: 2025/02/04 19:51:36 by dacarras         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:10:50 by dacarras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *read_line(int fd, char *storage)
+static char	*read_line(int fd, char *storage)
 {
 	char	*buff;
 	int		dim;
 
-	/* quizas haya que usar ft_calloc */
 	buff = ft_calloc((sizeof(char)), (BUFFER_SIZE + 1));
 	if (!buff)
 	{
@@ -41,16 +40,16 @@ static char *read_line(int fd, char *storage)
 	return (storage);
 }
 
-static char *save_extra(char *storage)
+static char	*save_extra(char *storage)
 {
-	int i;
-	int j;
-	char *buff;
+	int		i;
+	int		j;
+	char	*buff;
 
 	i = 0;
 	while (storage[i] != '\n' && storage[i])
 		i++;
-	if(!storage[i])
+	if (!storage[i])
 	{
 		free(storage);
 		return (NULL);
@@ -70,11 +69,11 @@ static char *save_extra(char *storage)
 	return (buff);
 }
 
-static char *save_line(char *storage)
+static char	*save_line(char *storage)
 {
-	char *buff;
-	int i;
-	int j;
+	char	*buff;
+	int		i;
+	int		j;
 
 	if (storage[0] == 0)
 		return (NULL);
@@ -90,14 +89,14 @@ static char *save_line(char *storage)
 		buff[j] = storage[j];
 		j++;
 	}
-	buff[j] = '\0';//j+1again
+	buff[j] = '\0';
 	return (buff);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char *line;
-	static char *storage;
+	char		*line;
+	static char	*storage;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

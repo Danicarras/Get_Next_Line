@@ -6,7 +6,7 @@
 /*   By: dacarras <dacarras@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:53:49 by dacarras          #+#    #+#             */
-/*   Updated: 2025/02/04 19:31:25 by dacarras         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:05:27 by dacarras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	n = size * nmemb;
 	p = (char *) malloc(n);
 	if (!p)
-
 		return (NULL);
 	i = 0;
 	while (i < n)
